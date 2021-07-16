@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/favorite_contacts.dart';
+import '../../data/data_providers/dummy_data.dart';
 import '../widgets/widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -52,6 +52,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   const FavoriteContacts(),
+                  RecentChat(chats: DummyData.getChats()),
                 ],
               ),
             ),

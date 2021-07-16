@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import '../entities/entity.dart';
 
 // ignore: avoid_classes_with_only_static_members
@@ -62,49 +64,49 @@ class DummyData {
           time: '5:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: true,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: olivia,
           time: '4:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: true,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: john,
           time: '3:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: false,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: sophia,
           time: '2:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: true,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: steven,
           time: '1:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: false,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: sam,
           time: '12:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: false,
+          unread: Random().nextBool(),
         ),
         MessageEntity(
           sender: greg,
           time: '11:30 AM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: false,
-          unread: false,
+          unread: Random().nextBool(),
         ),
       ];
 
