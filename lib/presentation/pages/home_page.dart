@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+import '../widgets/widget.dart';
+
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +33,11 @@ class _HomePageState extends State<HomePage> {
             ),
             onPressed: () {},
           ),
+        ],
+      ),
+      body: Column(
+        children: const [
+          CategorySelector(),
         ],
       ),
     );
