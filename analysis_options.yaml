@@ -1,0 +1,12 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+    rules:
+        - parameter_assignments
+
+analyzer:
+    errors:
+        missing_required_param: error
+        parameter_assignments: error
+        prefer_const_constructors: warning
+        avoid_unnecessary_containers: warning
