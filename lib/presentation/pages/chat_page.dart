@@ -58,7 +58,7 @@ class ChatPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        _chatSection(),
+                        _chatSection(context),
                         _messageComposerSection(context),
                       ],
                     ),
@@ -85,22 +85,27 @@ class ChatPage extends StatelessWidget {
     );
   }
 
-  Widget _chatSection() {
+  Widget _chatSection(
+    BuildContext context,
+  ) {
     return Expanded(
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-        ),
-        shrinkWrap: true,
-        itemCount: DummyData.getMessages(sender).length,
-        itemBuilder: (context, index) {
-          final message = DummyData.getMessages(sender)[index];
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: ListView.builder(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+          ),
+          shrinkWrap: true,
+          itemCount: DummyData.getMessages(sender).length,
+          itemBuilder: (context, index) {
+            final message = DummyData.getMessages(sender)[index];
 
-          return _cardMessage(
-            message,
-            message.sender.id == DummyData.getCurrentUser().id,
-          );
-        },
+            return _cardMessage(
+              message,
+              message.sender.id == DummyData.getCurrentUser().id,
+            );
+          },
+        ),
       ),
     );
   }
