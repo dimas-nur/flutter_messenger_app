@@ -58,30 +58,8 @@ class ChatPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Expanded(
-                          child: ListView.builder(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                            ),
-                            shrinkWrap: true,
-                            itemCount: DummyData.getMessages(sender).length,
-                            itemBuilder: (context, index) {
-                              final message =
-                                  DummyData.getMessages(sender)[index];
-
-                              return _cardMessage(
-                                message,
-                                message.sender.id ==
-                                    DummyData.getCurrentUser().id,
-                              );
-                            },
-                          ),
-                        ),
-                        // TODO : Change to widget message composer
-                        Container(
-                          height: 80,
-                          color: Colors.white,
-                        )
+                        _chatSection(),
+                        _messageComposerSection(context),
                       ],
                     ),
                     Container(
@@ -103,6 +81,26 @@ class ChatPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _chatSection() {
+    return Expanded(
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+        ),
+        shrinkWrap: true,
+        itemCount: DummyData.getMessages(sender).length,
+        itemBuilder: (context, index) {
+          final message = DummyData.getMessages(sender)[index];
+
+          return _cardMessage(
+            message,
+            message.sender.id == DummyData.getCurrentUser().id,
+          );
+        },
       ),
     );
   }
@@ -176,6 +174,67 @@ class ChatPage extends StatelessWidget {
       ),
       child: Row(
         children: isMe ? widgets.reversed.toList() : widgets,
+      ),
+    );
+  }
+
+  Widget _messageComposerSection(
+    BuildContext context,
+  ) {
+    return Container(
+      width: double.infinity,
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 20,
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 8,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.yellow.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.emoji_emotions_outlined,
+                    size: 26,
+                    color: Colors.grey,
+                  ),
+                ),
+                Expanded(
+                  child: TextField(
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      wordSpacing: 1.4,
+                      color: Colors.grey[700],
+                    ),
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration.collapsed(
+                      hintText: 'Type your message...',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.attach_file,
+                    size: 26,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
