@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/data_providers/dummy_data.dart';
+import '../pages/chat_page.dart';
 
 class FavoriteContacts extends StatelessWidget {
   const FavoriteContacts({Key? key}) : super(key: key);
@@ -43,15 +44,25 @@ class FavoriteContacts extends StatelessWidget {
           SizedBox(
             height: 120,
             child: ListView.builder(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                ),
-                scrollDirection: Axis.horizontal,
-                itemCount: DummyData.getFavoriteContacts().length,
-                itemBuilder: (context, index) {
-                  final contact = DummyData.getFavoriteContacts()[index];
+              padding: const EdgeInsets.only(
+                left: 10,
+              ),
+              scrollDirection: Axis.horizontal,
+              itemCount: DummyData.getFavoriteContacts().length,
+              itemBuilder: (context, index) {
+                final contact = DummyData.getFavoriteContacts()[index];
 
-                  return Padding(
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => ChatPage(
+                          sender: contact,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -72,8 +83,10 @@ class FavoriteContacts extends StatelessWidget {
                         ),
                       ],
                     ),
-                  );
-                }),
+                  ),
+                );
+              },
+            ),
           )
         ],
       ),

@@ -110,9 +110,9 @@ class DummyData {
         ),
       ];
 
-  static List<MessageEntity> getMessages() => [
+  static List<MessageEntity> getMessages(UserEntity sender) => [
         MessageEntity(
-          sender: james,
+          sender: sender,
           time: '5:30 PM',
           text: "Hey, how's it going? What did you do today?",
           isLiked: true,
@@ -127,14 +127,14 @@ class DummyData {
           unread: true,
         ),
         MessageEntity(
-          sender: james,
+          sender: sender,
           time: '3:45 PM',
           text: "How's the doggo?",
           isLiked: false,
           unread: true,
         ),
         MessageEntity(
-          sender: james,
+          sender: sender,
           time: '3:15 PM',
           text: 'All the food',
           isLiked: true,
@@ -148,7 +148,7 @@ class DummyData {
           unread: true,
         ),
         MessageEntity(
-          sender: james,
+          sender: sender,
           time: '2:00 PM',
           text: 'I ate so much food today.',
           isLiked: false,
