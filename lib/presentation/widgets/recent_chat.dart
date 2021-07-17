@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../data/entities/message_entity.dart';
@@ -27,12 +29,30 @@ class RecentChat extends StatelessWidget {
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
-          child: ListView.builder(
-            padding: const EdgeInsets.symmetric(
-              vertical: 12,
-            ),
-            itemCount: chats.length,
-            itemBuilder: (context, index) => _chatCard(context, chats[index]),
+          child: Stack(
+            children: [
+              ListView.builder(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                ),
+                itemCount: chats.length,
+                itemBuilder: (context, index) =>
+                    _chatCard(context, chats[index]),
+              ),
+              Container(
+                height: 30,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.white,
+                      Colors.white.withOpacity(0),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
